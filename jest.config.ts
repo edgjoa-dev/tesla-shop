@@ -14,15 +14,18 @@ const config: Config = {
     // Se ejecuta antes de cada archivo de pruebas
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     // Alias "@/..." apuntando a /src (igual que en tsconfig.json)
-    moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
-    },
+    moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
     testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
     // Archivos que cuentan para el reporte de cobertura
     collectCoverageFrom: [
         'src/**/*.{ts,tsx}',
         '!src/**/*.d.ts',
-        '!src/**/layout.tsx',
         '!src/**/*.test.{ts,tsx}',
+        '!src/**/__tests__/**',
+        '!src/**/__mocks__/**',
     ],
+    coverageDirectory: 'coverage',
+    coverageReporters: ['text-summary', 'lcov'],
 }
+
+export default createJestConfig(config)

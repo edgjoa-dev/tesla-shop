@@ -7,9 +7,15 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "jest-junit": {
+    "outputDirectory": "reports",
+    "outputName": "junit.xml"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -17,7 +23,8 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "4.3.3",
+    "@sonar/scan": "^5.1.0",
+    "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
@@ -30,6 +37,8 @@
     "eslint-config-next": "16.4.6",
     "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.5.2",
+    "jest-junit": "^17.0.0",
+    "postcss": "^8.5.32",
     "tailwindcss": "4.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5"
